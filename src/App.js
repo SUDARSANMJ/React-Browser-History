@@ -86,35 +86,35 @@ class App extends Component {
         isTrue: false,
     }
 
-        FillFunction = value => {
+         FillFunction = value => {
             const {latestHistoryList} = this.state
             const newHistoryList = latestHistoryList.filter(
-                eachValue => eachValue.id === value,
+                eachValue => eachValue.id === value
             )
             if (newHistoryList.length === 0) {
-                this.setState(latestHistoryList: newHistoryList, isTrue: true})
+                this.setState({latestHistoryList: newHistoryList, isTrue: true}) 
             }else {
                 this.setState({latestHistoryList: newHistoryList})
             }
-        }
+    }
 
-        ChangeFunction = 0 => {
-            this.setState({searchInput: e.target.value})
-        }
-
+        ChangeFunction = (e) => { 
+                this.setState({searchInput: e.target.value})
+            }
+ 
         render() {
             const {searchInput, latestHistoryList} = this.state 
             let {isTrue} = this.state
             const newHistoryList = latestHistoryList.filter(eachValue =>
                 eachValue.title.toLower().includes(searchInput.toLowerCase()),
-                
                
                 )
+
                 if (newHistoryList.length === 0) {
-                    isTrue = true 
-                        
+                  isTrue = true
+                }  
                     
-                }
+                
                 return (
                     <div className="main-container">
                         <div className="top-holder">
@@ -136,17 +136,20 @@ class App extends Component {
                             placeholder="Search history"
                             onChange={this.ChangeFunction}
                             value={searchInput}
-                            />
+                       />
                         </div>
                     </div>
-                    <div className="content-holder"
+
+                    <div className="content-holder">
+
                     {!isTrue && (
-                        <ul className="inner-holder"
+                        <ul className="inner-holder">
                         {newHistoryList.map(eachObject => (
                             <li 
                             key={eachObject.id}
                             uniqueId={eachObject.id}
-                            className="item-holder">
+                            className="item-holder"
+                            >
 
                             <p className="time">{eachObject.timeAccessed}</p>
                             <div className="icon-holder">
